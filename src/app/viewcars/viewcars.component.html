@@ -1,0 +1,35 @@
+<div class="container">
+    
+<h2>Car Lists</h2>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">CarId</th>
+        <th scope="col">CarName</th>
+        <th scope="col">Brand</th>
+        <th scope="col">FuelType</th>
+        <th scope="col">Price</th>
+        <th scope="col">Description</th>
+        <th scope="col">Image</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of CarLists;let i = index;">
+        <th scope="row">{{i+1}}</th>
+        <td>{{item.CarId}}</td>
+        <td>{{ item.CarName }}</td>
+        <td>{{ item.Brand }}</td>
+        <td>{{ item.FuelType }}</td>
+        <td>{{ item.Price }}</td>
+        <td>{{ item.Description }}</td>
+        <td><img src={{item.cimage}} alt={{item.CarName}} height="100" width="200"></td>
+        <td><a routerLink={{item.CarId}}>Rent Now</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</div>
