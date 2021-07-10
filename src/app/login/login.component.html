@@ -1,1 +1,25 @@
-<p>login works!</p>
+
+<div class="row d-flex">
+    <div class="col-sm"></div>
+    <div class="col-sm">
+      <h1 class="text-center">Login</h1>
+        <form >
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text"><fa-icon [icon]="user"></fa-icon></span>
+                </div>
+                <input type="text" id="uid" class="form-control" placeholder="Username"  >
+              </div>
+              
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><fa-icon [icon]="lock"></fa-icon></span>
+                  </div>
+                <input type="password" id="pwd" class="form-control" placeholder="password" >
+              </div>
+              <input type="button" class="btn btn-primary form-control" value="Login" (click)="Validateuser()">
+        </form>
+        
+    </div>
+    <div class="col-sm"></div>
+</div>

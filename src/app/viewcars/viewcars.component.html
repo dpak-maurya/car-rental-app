@@ -1,7 +1,7 @@
 <div class="container">
     
 <h2>Car Lists</h2>
-
+ <input type="button" class="btn btn-success" value="Show Image" (click)="showCars()">
   <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -11,6 +11,7 @@
         <th scope="col">Brand</th>
         <th scope="col">FuelType</th>
         <th scope="col">Price</th>
+        <th scope="col">Discounted Price</th>
         <th scope="col">Description</th>
         <th scope="col">Image</th>
         <th scope="col"></th>
@@ -23,10 +24,11 @@
         <td>{{ item.CarName }}</td>
         <td>{{ item.Brand }}</td>
         <td>{{ item.FuelType }}</td>
-        <td>{{ item.Price }}</td>
+        <td>{{ item.Price|currency:'INR':true}}</td>
+        <td>{{ item.Price|discount:20|currency:'INR':true}}</td>
         <td>{{ item.Description }}</td>
-        <td><img src={{item.cimage}} alt={{item.CarName}} height="100" width="200"></td>
-        <td><a routerLink={{item.CarId}}>Rent Now</a></td>
+        <td><img class="car-image" src={{item.cimage}} alt={{item.CarName}} height="100" width="200"></td>
+        <td><a routerLink="/rent" [queryParams]={cid:item.CarId,cname:item.CarName,cprice:item.Price} class="btn btn-info">Rent Now</a></td>
       </tr>
     </tbody>
   </table>

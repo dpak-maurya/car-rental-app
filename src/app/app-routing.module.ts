@@ -8,6 +8,7 @@ import { RentcarsComponent } from './rentcars/rentcars.component';
 import { ContactusComponent } from './contactus/contactus.component';
 
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
 
@@ -22,6 +23,10 @@ const routes: Routes = [
  {
   path:'Login',
   component:LoginComponent
+ },
+ {
+   path:'Register',
+   component:RegisterComponent
  },
  {
   path:'View',

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="#">CarRental</a>
   <button
     class="navbar-toggler"
@@ -15,21 +15,33 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item ">
-        <a class="nav-link" routerLink="Home">Home</a>
+        <a class="nav-link" routerLink="Home"><fa-icon [icon]="home"></fa-icon>Home</a>
+      </li>
+      
+      <li class="nav-item" *ngIf="IsLoggedin" >
+        <a class="nav-link" routerLink="Login"><fa-icon [icon]="signin"></fa-icon>Logout</a>
+      </li>
+      <li class="nav-item" *ngIf="!IsLoggedin">
+        <a class="nav-link" routerLink="Login"><fa-icon [icon]="signin"></fa-icon>Login</a>
+      </li>
+      
+      
+      <li class="nav-item">
+        <a class="nav-link" routerLink="Register"><fa-icon [icon]="register"></fa-icon>Register</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="Login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="View">View Cars</a>
+        <a class="nav-link" routerLink="View"><fa-icon [icon]="car"></fa-icon>View Cars</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="rent">Rent Cars</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" routerLink="contact">Contact Us</a>
+        <a class="nav-link" routerLink="contact"><fa-icon [icon]="contact"></fa-icon>Contact Us</a>
       </li>
     </ul>
   </div>
 </nav>
-<router-outlet></router-outlet>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+

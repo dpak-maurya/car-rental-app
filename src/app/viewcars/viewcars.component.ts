@@ -1,33 +1,28 @@
 import { Component, OnInit } from '@angular/core';
-
+import { CarserviceService } from '../carservice.service';
+import {faRupeeSign} from '@fortawesome/free-solid-svg-icons'
 @Component({
   selector: 'app-viewcars',
   templateUrl: './viewcars.component.html',
-  styleUrls: ['./viewcars.component.css']
+  styleUrls: ['./viewcars.component.css'],
+  providers:[CarserviceService]
 })
-export class ViewcarsComponent  {
-
-  constructor() { }
-  st:string[] = ['Manoj','Nirav','shivam'];
-  d:boolean=true
-CarLists:cardet[] =
-[
-{CarId :"c001", CarName : "Maruthi Swift", Brand:"Maruthi", FuelType:"Petrol",  Price:2000, Description:"Made in india",cimage:"assets/cars/maruti_swift.jpg"},
-{CarId :"c002", CarName : "Benz", Brand:"Maruthi", FuelType:"Petrol", Price:5000, Description:"Made in india" ,cimage:"assets/cars/bmw_i8.jpg"},
-{CarId :"c003", CarName : "Honda", Brand:"Maruthi", FuelType:"Petrol",Price:2000, Description:"Made in india" ,cimage:"assets/cars/honda_amaze.jpg"},
-{CarId :"c004", CarName : "TATA", Brand:"Maruthi", FuelType:"Petrol", Price:1000, Description:"Made in india" ,cimage:"assets/cars/tata_hexa.jpg"},
-{CarId :"c005", CarName : "Audi", Brand:"Maruthi", FuelType:"Petrol", Price:12000, Description:"Made in india" ,cimage:"assets/cars/bmw_i8.jpg"},
-
-];
-
+export class ViewcarsComponent implements OnInit {
+  CarLists:any;
+  rupee:any=faRupeeSign;
+  constructor(obj:CarserviceService) {
+    this.CarLists=obj.CarLists;
+  } 
+  ngOnInit(): void {
+    
+  }
+show?:boolean=true;
+showCars(){
+  this.show=!this.show;
+  var cars=document.getElementsByClassName("car-image");
+  for(var i=0;i<cars.length;i++){
+    (cars[i] as HTMLInputElement).style.display=this.show?'block':'none';
+  }
 }
-class cardet
-{
-  CarId:string=''
-  CarName:string=''
-  Brand:string=''
-  FuelType:string=''
-  Price?:number;
-  Description:string=''
-  cimage:string=''
+
 }
