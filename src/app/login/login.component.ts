@@ -2,37 +2,40 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBell, faUser, faLock } from '@fortawesome/free-solid-svg-icons';
 import { LoginService } from '../login.service';
+import {CarserviceService} from "../carservice.service";
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers:[LoginService]
+  providers:[LoginService,CarserviceService]
 })
 export class LoginComponent implements OnInit {
   bell: any;
   lock: any;
-  user: any;
 
-  constructor(private r: Router,private l:LoginService) {
+  usericon: any;
+
+  constructor(private r: Router,private l:LoginService,private obj:CarserviceService) {
     this.lock = faLock;
-    this.user = faUser;
+    this.usericon = faUser;
   }
 
   ngOnInit(): void {}
 
   result: any;
-  Validateuser() {
-    var uid = (document.getElementById('uid') as HTMLInputElement).value;
+  alluser:any;
+  ValidateUser(user:any) {
+    this.obj.AllUser().subscribe(res=>this.alluser=res);
+    this.alluser.for((u:any)=>{
+      if (user['uid'] == u['Userid'] && user['pwd']== u['Password']) {
+        sessionStorage.setItem("uid",user['uid']);
+        // location.reload();
+        this.r.navigate(['View']);
+      } else {
+        this.result = 'InValid user';
+      }
+    })
 
-    var pwd = (document.getElementById('pwd') as HTMLInputElement).value;
-
-    if (uid == 'admin' && pwd == 'india') {
-      sessionStorage.setItem("uid",uid);
-      location.reload();
-      this.r.navigate(['View']);
-    } else {
-      this.result = 'InValid user';
-    }
   }
 }

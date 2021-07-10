@@ -24,6 +24,9 @@ export class CarserviceService {
   DisplayAllCars():Observable<any>{
     return this.obj.get("https://localhost:44323/api/values");
   }
+  AllUser():Observable<any>{
+    return this.obj.get("https://localhost:44323/api/users");
+  }
   AddUser(user:any):Observable<any>{
     return this.obj.post("https://localhost:44323/api/users/add",user);
   }
