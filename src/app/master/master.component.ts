@@ -10,13 +10,13 @@ import { LoginService } from '../login.service';
   providers:[LoginService]
 })
 export class MasterComponent implements OnInit {
-  
+
   constructor(private l:LoginService) {
-    
+
    }
-  IsLoggedin:boolean=sessionStorage.getItem("uid")==null?false:true;
+  IsLogged:boolean=sessionStorage.getItem("uid") != null;
   home:any=faHome;
-  signin:any=faSignInAlt;
+  signing:any=faSignInAlt;
   car:any=faCar;
   register:any=faSignOutAlt;
   contact:any=faInfo;

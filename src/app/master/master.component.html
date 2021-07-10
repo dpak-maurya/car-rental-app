@@ -17,15 +17,15 @@
       <li class="nav-item ">
         <a class="nav-link" routerLink="Home"><fa-icon [icon]="home"></fa-icon>Home</a>
       </li>
-      
-      <li class="nav-item" *ngIf="IsLoggedin" >
-        <a class="nav-link" routerLink="Login"><fa-icon [icon]="signin"></fa-icon>Logout</a>
+
+      <li class="nav-item" *ngIf="IsLogged" >
+        <a class="nav-link" routerLink="Login"><fa-icon [icon]="signing"></fa-icon>Logout</a>
       </li>
-      <li class="nav-item" *ngIf="!IsLoggedin">
-        <a class="nav-link" routerLink="Login"><fa-icon [icon]="signin"></fa-icon>Login</a>
+      <li class="nav-item" *ngIf="!IsLogged">
+        <a class="nav-link" routerLink="Login"><fa-icon [icon]="signing"></fa-icon>Login</a>
       </li>
-      
-      
+
+
       <li class="nav-item">
         <a class="nav-link" routerLink="Register"><fa-icon [icon]="register"></fa-icon>Register</a>
       </li>

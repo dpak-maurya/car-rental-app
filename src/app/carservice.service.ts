@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
+import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class CarserviceService {
-  constructor() {}
+  constructor(private obj:HttpClient) {}
   CarLists:any =
 [
 {CarId :"c001", CarName : "Maruthi Swift", Brand:"Maruthi", FuelType:"Petrol",  Price:2000, Description:"Made in india",cimage:"assets/cars/maruti_swift.jpg"},
@@ -17,5 +19,9 @@ export class CarserviceService {
 ];
   Addnums(a: number, b: number) {
     return 'the sum is ' + (a + b);
+  }
+
+  DisplayAllCars():Observable<any>{
+    return this.obj.get("https://localhost:44323/api/values");
   }
 }

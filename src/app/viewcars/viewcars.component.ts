@@ -10,11 +10,10 @@ import {faRupeeSign} from '@fortawesome/free-solid-svg-icons'
 export class ViewcarsComponent implements OnInit {
   CarLists:any;
   rupee:any=faRupeeSign;
-  constructor(obj:CarserviceService) {
-    this.CarLists=obj.CarLists;
-  } 
+  constructor(private obj:CarserviceService) {
+  }
   ngOnInit(): void {
-    
+    this.obj.DisplayAllCars().subscribe(result=>this.CarLists=result);
   }
 show?:boolean=true;
 showCars(){
