@@ -30,5 +30,8 @@ export class CarserviceService {
   AddUser(user:any):Observable<any>{
     return this.obj.post("https://localhost:44323/api/users/add",user);
   }
+  AddBooking(bk:any):Observable<any>{
+    return this.obj.post("https://localhost:44323/api/bookings/add",bk);
+  }
 
 }

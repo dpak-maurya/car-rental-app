@@ -6,45 +6,51 @@ import { CarserviceService } from '../carservice.service';
   selector: 'app-rentcars',
   templateUrl: './rentcars.component.html',
   styleUrls: ['./rentcars.component.css'],
-  providers:[CarserviceService]
+  providers: [CarserviceService],
 })
 export class RentcarsComponent implements OnInit {
-  selectedCar:any;
-  cars:[];
-  constructor(private q:ActivatedRoute,obj:CarserviceService,r:Router) {
-    this.cars=obj.CarLists;
-    if(sessionStorage.getItem('uid')==null){
-      r.navigate(['Login']);
-    }
-   }
+  selectedCar: any;
+  constructor(
+    private q: ActivatedRoute,
+    private obj: CarserviceService,
+    r: Router
+  ) {}
 
-cid :any;
-cname:any;
-cprice:any;
+  cid?: number;
+  cname: any;
+  cprice: any;
 
   ngOnInit(): void {
-    this.q.queryParams.subscribe(c=>  {
-
-      this.cid = c['cid']; 
-      this.cname=c['cname'];
-      this.cprice=c['cprice'];
+    this.q.queryParams.subscribe((c) => {
+      this.cid = parseInt(c['cid']);
+      this.cname = c['cname'];
+      this.cprice = c['cprice'];
     });
-    this.selectedCar=this.cars.filter(c=>c['CarId']===this.cid);
-    console.log(this.selectedCar["CarName"]);
   }
-  diffDay?:number;
-  totalcost?:number;
-  d:boolean=false;
-  selectDay(){
-    var day1=(document.getElementById("day1") as HTMLInputElement).value.toString();
-    var day2=(document.getElementById("day2") as HTMLInputElement).value.toString();
-    var date1=new Date(day1);
-    var date2=new Date(day2);
-    console.log(date1,date2);
+  diffDay?: number;
+  totalcost?: number;
+  day1: any;
+  day2: any;
+  response:string="";
+  BookCar(dates: any) {
+    var date1 = new Date(dates['day1']);
+    var date2 = new Date(dates['day2']);
+    console.log(date1, date2);
     var oneDay = 24 * 60 * 60 * 1000; // hours*minutes*seconds*milliseconds
-    this.diffDay = Math.abs((date2.getTime() - date1.getTime()) / (oneDay));
-    this.totalcost=this.diffDay*this.cprice;
-    this.d=true;
+    this.diffDay = Math.abs((date2.getTime() - date1.getTime()) / oneDay);
+    this.totalcost = this.diffDay * this.cprice;
+    let userid = sessionStorage.getItem('uid');
+    
+    let bk = {
+      Userid: userid,
+      Carid: this.cid,
+      Bookingdate: new Date(Date.now()),
+      Fromdate: date1,
+      Todate: date2,
+      TotalPrice: this.totalcost,
+      Status: 1,
+    };
+      console.log(bk);
+    this.obj.AddBooking(bk).subscribe((res) => (this.response = res));
   }
-
 }

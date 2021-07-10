@@ -3,32 +3,38 @@
   <div class="col-4"></div>
 
   <div class="col-4">
-    <form>
+    <form #datefrm="ngForm" (ngSubmit)="BookCar(datefrm.value)">
         <div class="col">
             <label for="day1">From Date</label>
-            <input type="date" id="day1" class="form-control" required/>
+            <input type="date" id="day1" name="day1" [(ngModel)]="day1" class="form-control" required/>
           </div>
           <div class="col">
             <label for="day2">To Date</label>
-            <input type="date" id="day2" class="form-control" required/>
+            <input type="date" id="day2" name="day2" [(ngModel)]="day2" class="form-control" required/>
           </div>
       <div class="col">
         <input
-          type="button"
+          type="submit"
           class="btn btn-primary form-control"
           value="submit"
-          (click)="selectDay()"
         />
       </div>
     </form>
+    <br><br>
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"> <strong>Car Id: </strong> {{ cid }}</li>
+        <li class="list-group-item"><strong>Car Name: </strong> {{ cname }}</li>
+        <li class="list-group-item"><strong>From Date: </strong> {{ day1|date:'longDate' }}</li>
+        <li class="list-group-item"><strong>To Date: </strong> {{ day2|date:'longDate' }}</li>
+        <li class="list-group-item"><strong>Number of day: </strong> {{ diffDay }}</li>
+        <li class="list-group-item"><strong>Total Price: </strong> {{totalcost}}</li>
+      </ul>
+    </div>
+    {{response}}
   </div>
   <div class="col-4"></div>
 </div>
-<div *ngIf="d">
-    <p>Car Id: {{ cid }}</p>
-    <p>Car Name: {{ cname }}</p>
-    <p>Number of day: {{ diffDay }}</p>
-    <p>Total Price: {{totalcost}}</p>
-</div>
+
 
 

@@ -10,6 +10,8 @@ import { ContactusComponent } from './contactus/contactus.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { RegisterComponent } from './register/register.component';
 
+import {CarrentalGuard} from './carrental.guard';
+
 const routes: Routes = [
 
   {
@@ -33,7 +35,7 @@ const routes: Routes = [
   component:ViewcarsComponent
  },
  {
-  path:'rent',
+  path:'rent',canActivate:[CarrentalGuard],
   component:RentcarsComponent
  },
  {

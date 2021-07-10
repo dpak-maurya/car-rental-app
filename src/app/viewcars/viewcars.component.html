@@ -28,7 +28,7 @@
         <td>{{ item.Price|discount:20|currency:'INR':true}}</td>
         <td>{{ item.Description }}</td>
         <td><img class="car-image" src={{item.CarImage}} alt={{item.CarName}} height="100" width="200"></td>
-        <td><a routerLink="/rent" [queryParams]={cid:item.CarId,cname:item.CarName,cprice:item.Price} class="btn btn-info">Rent Now</a></td>
+        <td><a routerLink="/rent" [queryParams]={cid:item.Carid,cname:item.CarName,cprice:item.Price} class="btn btn-info">Rent Now</a></td>
       </tr>
     </tbody>
   </table>
