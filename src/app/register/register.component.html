@@ -2,57 +2,37 @@
   <div class="col-sm"></div>
   <div class="col-sm">
     <h1 class="text-center">Register</h1>
-    <form>
+    <form #user="ngForm" (ngSubmit)="AddUser(user.value)">
       <div class="form-group">
-        <label for="name">Enter name</label>
-        <input type="text" (input)="showName($event)" class="form-control" />
+        <label for="Userid">User Id</label>
+        <input type="text" id="Userid" name="UserId" ngModel class="form-control" required/>
       </div>
       <div class="form-group">
-        <label for="email"> Enter Email</label>
-        <input type="email" class="form-control" id="email" />
+        <label for="password"> Password</label>
+        <input type="password" name="Password" ngModel class="form-control" id="password" />
       </div>
       <div class="form-group">
-        <label for="dob">Date of Birth</label>
-        <input type="date" id="dob" class="form-control" />
+        <label for="fname">FirstName</label>
+        <input type="text" id="fname" ngModel name="FirstName" class="form-control" required />
       </div>
       <div class="form-group">
-        <p>Gender:</p>
-        <div class="form-check-inline">
-          <input
-            type="radio"
-            id="male"
-            class="form-check-input"
-            name="gender"
-            value="male"
-          />
-          <label for="male" class="form-check-label"> Male </label>
-        </div>
-        <div class="form-check-inline">
-          <input
-            type="radio"
-            id="female"
-            class="form-check-input"
-            name="gender"
-            value="female"
-          />
-          <label for="female" class="form-check-label"> Female</label>
-        </div>
+        <label for="lname">LastName</label>
+        <input type="text" id="lname" ngModel name="LastName" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label for="email"> Email</label>
+        <input type="email" name="Email" ngModel class="form-control" id="email" required />
       </div>
 
       <div class="form-group">
-        <label for="nationality">Nationality</label>
-        <select id="nationality" class="form-control">
-          <option value="">None</option>
-          <option value="indian">Indian</option>
-          <option value="american">American</option>
-          <option value="british">British</option>
-        </select>
+        <label for="mobile"> Mobile Number</label>
+        <input type="text" name="Mobile" ngModel class="form-control" id="mobile" required/>
       </div>
       <br>
       <div class="form-group">
-        <input type="button" class="form-control btn btn-primary"  value="submit" (click)="print()" />
+        <input type="submit" class="form-control btn btn-primary" [disabled]="user.form.invalid" value="submit" />
       </div>
-      
+
     </form>
   </div>
   <div class="col-sm"></div>

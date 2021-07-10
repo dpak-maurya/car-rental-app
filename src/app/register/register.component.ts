@@ -1,19 +1,24 @@
-import { Component, Input } from '@angular/core';
-
+import {Component, Input, OnInit} from '@angular/core';
+import {CarserviceService} from '../carservice.service'
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  providers:[CarserviceService]
 })
-export class RegisterComponent  {
+export class RegisterComponent  implements OnInit {
 
 name:string="";
 gender?:string;
 dob?:string;
 email?:string="";
 country?:string;
+constructor(private obj:CarserviceService) {
+}
+ngOnInit() {
+}
 
-showName(event:any){
+  showName(event:any){
   this.name=event.target.value;
 }
 print(){
@@ -28,6 +33,9 @@ print(){
   this.email=(document.getElementById("email") as HTMLInputElement).value;
   this.country=(document.getElementById("nationality") as HTMLInputElement).value;
 }
-
-
+  response:string="";
+  AddUser(user: any) {
+    console.log(user);
+    this.obj.AddUser(user).subscribe(res=>this.response=res);
+  }
 }
