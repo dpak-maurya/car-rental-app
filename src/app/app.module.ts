@@ -13,6 +13,7 @@ import { MasterComponent } from './master/master.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { RegisterComponent } from './register/register.component';
 import { DiscountPipe } from './discount.pipe';
+import {HttpClientModule} from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { DiscountPipe } from './discount.pipe';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
